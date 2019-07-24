@@ -3,6 +3,6 @@ LABEL MAINTAINER="cy"
 RUN mkdir /app && \
   pip3 install flask
 EXPOSE 8000
-COPY app.py /app
+COPY app.py /app/app.py
 WORKDIR /app
 CMD ["python3", "app.py"]
