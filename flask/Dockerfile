@@ -1,6 +1,7 @@
-FROM python:3.8
+FROM python:3.8.0b2-alpine
 LABEL MAINTAINER="cy"
-RUN pip3 install flask
+RUN mkdir /app && \
+  pip3 install flask
 EXPOSE 8000
 COPY app /app
 WORKDIR /app
