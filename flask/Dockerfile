@@ -5,4 +5,4 @@ RUN mkdir /app && \
 EXPOSE 8000
 COPY app.py /app/app.py
 WORKDIR /app
-CMD ["python3", "managy.py"]
+CMD ["python3", "app.py"]
