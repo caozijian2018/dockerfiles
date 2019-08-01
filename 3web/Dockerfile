@@ -1,10 +1,9 @@
 FROM alpine:3.9
-MAINTAINER cy
-COPY app /app
+LABEL MAINTAINER=cy
 WORKDIR /app
 ADD build.sh /build.sh
 RUN sh /build.sh
 EXPOSE 8000
 
-CMD ["python3", "test.py"]
 
+#  docker run --name=node1 alpine:3.9  sh
