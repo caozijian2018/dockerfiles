@@ -1,6 +1,6 @@
 #!/bin/sh
-  # 阿里源  
-  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories  && \
+  # 阿里源   sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories  && \
+  
   apk upgrade --no-cache \
   && apk add --no-cache \
   musl \
