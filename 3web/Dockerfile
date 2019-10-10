@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM node:10.16.3-alpine
 LABEL MAINTAINER=cy
 WORKDIR /app
 ADD build.sh /build.sh
