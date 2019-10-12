@@ -1,5 +1,7 @@
 #!/bin/sh
 sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
   && apk upgrade --no-cache \
-  && apk add git \
+  && apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.10/main/ nodejs=10.16.3-r0 \
+  && apk add npm \
+  && apk add git 
   
