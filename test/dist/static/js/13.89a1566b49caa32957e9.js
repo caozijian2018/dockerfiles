@@ -1,1 +1,0 @@
-webpackJsonp([13],{"+abo":function(e,o,n){"use strict";Object.defineProperty(o,"__esModule",{value:!0});var i={name:"authredirect",created:function(){var e=window.location.search.slice(1);window.opener.location.href=window.location.origin+"/login#"+e,window.close()}},l=n("VU/8")(i,null,!1,null,null,null);l.options.__file="src/views/login/authredirect.vue";o.default=l.exports}});
