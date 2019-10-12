@@ -1,0 +1,36 @@
+version: "3"
+services:
+  tracker-front:
+    image: 'caocaocao/tracker'
+    container_name: tracker_web2
+    working_dir: /app/
+    volumes:
+      - "./dist:/app/dist"
+      - ./node_modules:/app/node_modules
+    command:
+      - /bin/sh
+      - -c
+      - |
+        sh deploy_auto.sh
+        tail -f /dev/null
+
+    restart: always
+    environment:
+      - WEB_BRANCH=master
+      - WEB_PRODORDEV=build_with_docker
+      - HOST=0.0.0.0
+      - WEB_COMMITID=46f7544ec5298dc3690ca8a6cbb98ef1944343fe
+      - WEB_NODE_MODULES_IS_CHANGE=true
+    ports:
+      - "8888:9999"
+
+  # tracker-front-depend:
+  #   image: 'caocaocao/tracker_depend'
+  #   container_name: tracker_depend
+  #   working_dir: /app/
+  #   restart: always
+  #   command:
+  #     - /bin/sh
+  #     - -c
+  #     - |
+  #       tail -f /dev/null
