@@ -29,7 +29,6 @@ if [[ $PRODORDEV = dev ]]
 then
     pI "dev 本地开发"
     cd $WEB_PROJECT_NAME
-    npm run $PRODORDEV
 elif  [[ $BRANCH && $PRODORDEV && $COMMIT_ID && $WEB_PROJECT_NAME && $GIT_ADDR ]]
 then
     pI "build！！！！！"
@@ -46,30 +45,33 @@ then
     pI "开始复制node_modules $(date)"
     cp -r ../node_modules ./node_modules
     pI "复制node_modules完成 $(date)"
+else
+    exit
+fi
 
-    if [[ $IS_REGISTRY ]]
-    then
-        npm config set registry http://registry.npm.taobao.org/
-    fi
+if [[ $IS_REGISTRY ]]
+then
+    npm config set registry http://registry.npm.taobao.org/
+fi
 
-    if [[ $NODE_MODULES_IS_CHANGE ]]
+if [[ $NODE_MODULES_IS_CHANGE ]]
+then
+    pI "开始install node_modules $(date)"
+    npm install
+    pI "install node_modules 结束 $(date)"
+    pI "start！！！！!"
+    npm run $PRODORDEV
+    pI "end！！！！!"
+    if [[ $PRODORDEV != dev  ]]
     then
-        pI "开始install node_modules $(date)"
-        npm install
-        pI "install node_modules 结束 $(date)"
-        pI "start！！！！!"
-        npm run $PRODORDEV
-        pI "end！！！！!"
         pI "删除../node_modules $(date)"
         rm -rf ../node_modules/*
         pI "删除../node_modules 结束 $(date)"
         cp -r ./node_modules/ ../
         pI "复制../node_modules 结束 $(date)"
-    else
-        pI "start！！！！!"
-        npm run $PRODORDEV
-        pI "end！！！！!"
     fi
 else
-    exit
+    pI "start！！！！!"
+    npm run $PRODORDEV
+    pI "end！！！！!"
 fi
