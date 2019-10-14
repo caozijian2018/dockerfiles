@@ -27,11 +27,13 @@ tracker-front:
 ```
 
 > NODE_MODULES_IS_CHANGE ---> 如果node_modules修改了传入true 否则不传这个值
-  WEB_BRANCH ---> 分支  
-  WEB_PRODORDEV --->  npm run的命令  
-  WEB_PROJECT_NAME ---> 项目名字  
+  WEB_BRANCH ---> 分支  （必传
+  WEB_PRODORDEV --->  npm run的命令  （必传
+  WEB_PROJECT_NAME ---> 项目名字  （必传
   WEB_GIT_ADDR ---> git 下载的地址
-  WEB_NEED_NPM_REGISTRY ---> 如果需要淘宝npm源传true(国外服务器就不传这个值)
+  WEB_COMMITID ---> commit id (build 正式环境必传
+  WEB_NEED_NPM_REGISTRY ---> 如果需要淘宝npm源传true
+  NODE_MODULES_IS_CHANGE ---> npm 包是否更新
   
 > dev 本地开发环境
 ```
@@ -43,3 +45,6 @@ volumes:
 为了不每次都install 把node_modules 挂在主机本地中。为的是节约时间  
 share:/app/dist  
 dist放的就是打包好的文件
+
+> !记得用之前把本地的node_modules清空 因为环境不一样
+如果是正式环境更新了代码 必须要传commitid yml变了 才会重启这个容器。
