@@ -5,6 +5,6 @@ sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
   && apk add npm \
   && apk add git 
   && apk add python\
-  && && apk add  openssh --no-cache\
+  && apk add  openssh --no-cache\
   && npm set sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
   
